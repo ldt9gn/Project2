@@ -10,7 +10,7 @@ struct node {
 	node* left; //left is .
 	node* right;//right is _
 	virtual ~node() {}
-	node()
+	node() //Default Node Values, so the left and right node automatically gets created
 	{
 		left = NULL;
 		right = NULL;
@@ -27,7 +27,10 @@ public:
 
 		char letter; // This is the letter
 		string code; // This is the character
-		root = new node; // Declare the root
+
+		root = new node; // Declare the root just in case
+		//NOTE: root does not have any values, just points towards left and right
+
 		while (fin.good()) // This puts every letter into the tree
 		{
 			fin >> letter; // This passes only the first character of each line (letter)
@@ -51,7 +54,12 @@ public:
 				temp = temp->right;
 			}
 		}
-		cout<<temp->data;
+		//If there's an error. 
+		if (temp->data == NULL)
+		{
+			cout << "ERROR: Wrong Morse Code Inserted";
+			return 0;
+		}
 		return temp->data;
 	};
 
@@ -61,20 +69,26 @@ public:
 private:
 	void insert(char letter, string code)
 	{
+		//First we start at the root
 		node* temp = root;
 
+		//Then we go through the code one item at a time
 		for (int i = 0;i <code.size();i++)
 		{
+			//If it's a . we go left
 			if (code[i] == '.')
 			{
+				//We'll have to create the left node first if it does not exists
 				if (temp->left == NULL)
 				{
 					temp->left = new node;
 				}
 				temp = temp->left;
 			}
+			//If it's _ we go right
 			else if (code[i] == '_')
 			{
+				//Have to create right node first if it does not exists
 				if (temp->right == NULL)
 				{
 					temp->right = new node;
@@ -82,6 +96,7 @@ private:
 				temp = temp->right;
 			}
 		}
+
 		temp->data = letter;
 	};
 	node *root;
