@@ -63,6 +63,30 @@ public:
 		return temp->data;
 	};
 
+	//Decodes the String
+	string decode(string code)
+	{
+		string x;
+		string message;
+		for (int i = 0; i < code.size();i++)
+		{
+			if (code[i] != ' ')
+			{
+				x = x + code[i];
+			}
+			else
+			{
+				message = message + getletter(x);
+				x = "";
+			}
+		}
+		if (x != "")
+		{
+			message = message + getletter(x);
+		}
+
+		return message;
+	};
 
 
 
