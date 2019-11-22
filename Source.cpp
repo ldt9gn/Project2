@@ -8,6 +8,7 @@ void main()
 {
 	MorseTree tree;
 	char x = tree.getletter("....");
-	cout << x;
+	cout << x << endl;
+	cout << tree.decode(".... . ._.. ._.. ___");
 	cin.ignore();
 }
