@@ -1,4 +1,4 @@
-#include "MorseCodeTree.h"
+#include"MorseCodeTree.h"
 #include<iostream>
 #include<fstream>
 #include<string>
@@ -11,7 +11,4 @@ void main()
 	cout << x << endl;
 	cout << tree.decode(".... . ._.. ._.. ___");
 	cin.ignore();
-
-	char x = tree.getMorse('a');
-	cout << x << endl;
 }
