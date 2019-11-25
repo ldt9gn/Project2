@@ -12,6 +12,5 @@ void main()
 	cout << tree.decode(".... . ._.. ._.. ___");
 	cin.ignore();
 
-	char x = tree.getMorse('a');
-	cout << x << endl;
+	tree.getMorse('a');
 }

@@ -37,28 +37,29 @@ public:
 			fin >> code; //This passes in everything else in the line (the code);
 			insert(letter, code);
 		}
+
+		fin.close();
 	};
 
 	char getMorse(char x)
 	{
-		node* temp = root;
-		bool ifLetterExists(struct node* temp, char letter);
-		{
-			if (root == NULL)
-				return false;
+		char letter;
+		string code;
+		char y = ' ';
+		ifstream fin;
 
-			if (temp->data == letter)
-				return true;
-
-			
-			bool left1 = ifLetterExists(temp->left, letter);
-
-			bool right1 = ifLetterExists(temp->right, letter);
-
-			
+		fin.open("morse.txt");
 		
-
-		};
+		while (x != y) {
+			fin >> letter;
+			fin >> code;
+			if (letter == x)
+			{
+				cout << code << " " << endl;
+			}
+		}
+		fin.close();
+	};
 
 	//Returns only one letter
 	char getletter(string x)
@@ -110,31 +111,31 @@ public:
 	};
 
 
-/*	 string encode(string code)
-	{
-		string x;
-		string encoded_message;
-		for (int i = 0; i < code.size; i++)
+	/*	 string encode(string code)
 		{
-			if (code[i] != ' ')
+			string x;
+			string encoded_message;
+			for (int i = 0; i < code.size; i++)
 			{
-				x = x + code[i];
+				if (code[i] != ' ')
+				{
+					x = x + code[i];
+				}
+				else
+				{
+					encoded_message = encoded_message + getMorse(x);
+					x = "";
+				}
 			}
-			else
+			if (x != "")
 			{
 				encoded_message = encoded_message + getMorse(x);
-				x = "";
 			}
-		}
-		if (x != "")
-		{
-			encoded_message = encoded_message + getMorse(x);
-		}
 
-			return encoded_message;
-	};
+				return encoded_message;
+		};
 
-*/
+	*/
 
 private:
 	void insert(char letter, string code)
